@@ -1,0 +1,76 @@
+/* App layout and styling */
+
+.app-container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--bg-secondary);
+}
+
+/* Main Content Area */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Content Area */
+.content-area {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+/* Page Wrapper */
+.page-wrapper {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2rem;
+  background-color: var(--bg-secondary);
+}
+
+/* Right Panel (Ads) */
+.right-panel {
+  width: 300px;
+  background-color: var(--bg-primary);
+  border-left: 1px solid var(--border-color);
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: none;
+}
+
+/* Responsive Design */
+@media (min-width: 1440px) {
+  .right-panel {
+    display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-wrapper {
+    padding: 1rem;
+  }
+
+  .content-area {
+    flex-direction: column;
+  }
+
+  .right-panel {
+    display: none !important;
+  }
+}
+
+/* Scrollbar for page wrapper */
+.page-wrapper::-webkit-scrollbar {
+  width: 8px;
+}
+
+.page-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.page-wrapper::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}

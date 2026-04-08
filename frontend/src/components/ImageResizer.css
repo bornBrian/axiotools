@@ -1,0 +1,103 @@
+/* Image Resizer Styling */
+
+.preset-section,
+.dimensions-section {
+  margin-bottom: 2rem;
+}
+
+.preset-section label,
+.dimensions-section label {
+  display: block;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.preset-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.preset-btn {
+  padding: 0.625rem 1.25rem;
+  border: 2px solid var(--border-color);
+  background-color: var(--bg-primary);
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  font-size: 14px;
+}
+
+.preset-btn:hover {
+  border-color: var(--primary);
+  background-color: rgba(22, 163, 74, 0.05);
+}
+
+.preset-btn.active {
+  border-color: var(--primary);
+  background-color: rgba(22, 163, 74, 0.1);
+  color: var(--primary);
+}
+
+.dimension-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.input-group input {
+  padding: 0.625rem 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1);
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.checkbox-label input {
+  cursor: pointer;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .preset-buttons {
+    gap: 0.5rem;
+  }
+
+  .preset-btn {
+    font-size: 12px;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .dimension-inputs {
+    grid-template-columns: 1fr;
+  }
+}

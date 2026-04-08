@@ -1,0 +1,58 @@
+/* Image Converter Styling */
+
+.format-section {
+  margin-bottom: 2rem;
+}
+
+.format-section label {
+  display: block;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.format-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.format-btn {
+  flex: 1;
+  padding: 0.875rem;
+  border: 2px solid var(--border-color);
+  background-color: var(--bg-primary);
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  font-size: 14px;
+}
+
+.format-btn:hover {
+  border-color: var(--primary);
+  background-color: rgba(22, 163, 74, 0.05);
+}
+
+.format-btn.active {
+  border-color: var(--primary);
+  background-color: rgba(22, 163, 74, 0.1);
+  color: var(--primary);
+}
+
+.format-info {
+  font-size: 13px;
+  color: var(--text-light);
+  margin: 0;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .format-buttons {
+    gap: 0.5rem;
+  }
+
+  .format-btn {
+    font-size: 13px;
+  }
+}

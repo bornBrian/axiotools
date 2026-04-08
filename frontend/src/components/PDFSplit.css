@@ -1,0 +1,66 @@
+/* PDF Split Styling */
+
+.split-files {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.split-files label {
+  display: block;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.file-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1rem;
+}
+
+.file-download-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1rem;
+  background-color: var(--bg-tertiary);
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.file-download-card:hover {
+  border-color: var(--primary);
+  background-color: rgba(22, 163, 74, 0.05);
+  transform: translateY(-2px);
+}
+
+.file-download-card span:first-child {
+  font-size: 32px;
+  margin-bottom: 0.5rem;
+}
+
+.file-download-card span:last-child {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .file-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .file-download-card {
+    padding: 1rem 0.5rem;
+  }
+
+  .file-download-card span:first-child {
+    font-size: 24px;
+  }
+}

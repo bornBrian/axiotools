@@ -1,0 +1,56 @@
+/* Ad Banner Styling */
+
+.ad-container {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.ad-label {
+  padding: 0.5rem 1rem;
+  background-color: var(--bg-tertiary);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ad-content {
+  padding: 1rem;
+}
+
+.ad-placeholder {
+  background: linear-gradient(135deg, rgba(22, 163, 74, 0.05) 0%, rgba(22, 163, 74, 0.02) 100%);
+  border: 1px dashed rgba(22, 163, 74, 0.2);
+  border-radius: 8px;
+  padding: 2rem 1rem;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.ad-placeholder p {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Top Placement */
+.ad-container.top {
+  margin-bottom: 2rem;
+  margin-top: 0;
+}
+
+/* Sidebar Placement */
+.ad-container.sidebar {
+  margin-bottom: 1.5rem;
+}
+
+/* Mobile Responsive */
+@media (max-width: 1440px) {
+  .ad-container.sidebar {
+    display: none;
+  }
+}

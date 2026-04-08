@@ -1,0 +1,5 @@
+{
+  "buildCommand": "echo 'Build already created'",
+  "outputDirectory": "build",
+  "public": false
+}

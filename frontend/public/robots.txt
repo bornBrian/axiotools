@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /temp/
+
+# Allow sitemap
+Sitemap: https://axiotools.com/sitemap.xml
+
+# Crawl delay
+Crawl-delay: 1
+
+# User agents
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /

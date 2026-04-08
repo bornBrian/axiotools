@@ -1,0 +1,263 @@
+/* Image Compressor Styling */
+
+.tool-page {
+  max-width: 900px;
+}
+
+.page-description {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+.tool-container {
+  background-color: var(--bg-primary);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+}
+
+/* File Preview */
+.file-preview {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: var(--bg-tertiary);
+  border-radius: 8px;
+  border-left: 4px solid var(--primary);
+}
+
+.file-preview p {
+  margin: 0 0 0.5rem 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.file-size {
+  color: var(--text-light);
+  font-size: 13px !important;
+}
+
+/* Compression Settings */
+.compression-settings {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.compression-settings label {
+  display: block;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.level-options {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.level-btn {
+  flex: 1;
+  padding: 0.75rem;
+  border: 2px solid var(--border-color);
+  background-color: var(--bg-primary);
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  font-size: 14px;
+}
+
+.level-btn:hover {
+  border-color: var(--primary);
+  background-color: rgba(22, 163, 74, 0.05);
+}
+
+.level-btn.active {
+  border-color: var(--primary);
+  background-color: rgba(22, 163, 74, 0.1);
+  color: var(--primary);
+}
+
+.level-hint {
+  font-size: 13px;
+  color: var(--text-light);
+  margin: 0;
+}
+
+/* Buttons */
+.primary-btn,
+.secondary-btn,
+.download-btn {
+  width: 100%;
+  padding: 0.875rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 1rem;
+}
+
+.primary-btn {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+}
+
+.primary-btn:hover:not(:disabled) {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.primary-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.download-btn {
+  background-color: var(--success);
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.download-btn:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.secondary-btn {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.secondary-btn:hover {
+  background-color: var(--border-color);
+}
+
+/* Result Container */
+.result-container {
+  text-align: center;
+}
+
+.result-success {
+  margin-bottom: 2rem;
+}
+
+.success-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background-color: rgba(16, 185, 129, 0.1);
+  border-radius: 50%;
+  font-size: 32px;
+  color: var(--success);
+  margin-bottom: 1rem;
+}
+
+.result-success h2 {
+  color: var(--text-primary);
+}
+
+/* Stats */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat {
+  padding: 1rem;
+  background-color: var(--bg-tertiary);
+  border-radius: 8px;
+}
+
+.stat-label {
+  display: block;
+  font-size: 12px;
+  color: var(--text-light);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.stat-value {
+  display: block;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* Form Group */
+.form-group {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  font-size: 15px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="range"] {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+  margin-bottom: 1rem;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="range"]:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1);
+}
+
+.form-group input[type="range"] {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.result-section {
+  text-align: center;
+  padding: 2rem;
+}
+
+.result-success {
+  font-size: 18px;
+  color: var(--success);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .tool-container {
+    padding: 1.5rem;
+  }
+
+  .level-options {
+    gap: 0.5rem;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+}
