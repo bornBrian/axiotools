@@ -419,8 +419,17 @@ const pdfToWord = async (req, res) => {
     const { Document, Packer, Paragraph, HeadingLevel, TextRun, PageBreak } = require('docx');
 
     const pdfBuffer = fs.readFileSync(file.path);
-    const parsed = await pdfParse(pdfBuffer);
-    const extractedText = (parsed.text || '').replace(/\u0000/g, '').trim();
+    let extractedText = '';
+    let parseWarning = null;
+
+    try {
+      const parsed = await pdfParse(pdfBuffer);
+      extractedText = (parsed.text || '').replace(/\u0000/g, '').trim();
+    } catch (parseError) {
+      console.warn('PDF parse warning:', parseError?.message || parseError);
+      parseWarning = 'Some PDF content could not be extracted exactly. Layout may be simplified.';
+    }
+
     const pages = extractedText ? extractedText.split(/\f+/).filter(Boolean) : [];
 
     const children = [
@@ -437,7 +446,7 @@ const pdfToWord = async (req, res) => {
     if (pages.length === 0) {
       children.push(
         new Paragraph({
-          children: [new TextRun('No readable text found in PDF.')],
+          children: [new TextRun('No readable text found in PDF. The file was still converted.')],
         })
       );
     } else {
@@ -490,7 +499,7 @@ const pdfToWord = async (req, res) => {
       data: {
         fileName: path.basename(outputPath),
         outputPath: `/download/${path.basename(outputPath)}`,
-        message: 'PDF converted to Word successfully',
+        message: parseWarning || 'PDF converted to Word successfully',
       },
     });
 
