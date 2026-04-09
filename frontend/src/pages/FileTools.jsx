@@ -6,6 +6,7 @@ const FileTools = ({ onBackToDashboard }) => {
   const imageTools = [
     { emoji: '📸', name: 'Compress Image', desc: 'Reduce file size while maintaining quality' },
     { emoji: '📐', name: 'Resize Image', desc: 'Change image dimensions safely' },
+    { emoji: '🛂', name: 'Passport Photo Resizer', desc: 'Resize photos for USA, UK, and Canada passport formats' },
     { emoji: '🎨', name: 'Convert Image', desc: 'Transform between PNG, JPEG, WebP formats' },
     { emoji: '📄', name: 'Image to PDF', desc: 'Combine multiple images into one PDF' },
     { emoji: '💧', name: 'Add Watermark', desc: 'Protect images with text watermarks' },

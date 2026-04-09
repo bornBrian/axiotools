@@ -41,6 +41,12 @@ const Dashboard = ({ onSelectTool }) => {
       title: 'Apply Filters',
       description: 'Enhance with grayscale, sepia, blur effects',
     },
+    {
+      id: 'passport-photo',
+      icon: '🛂',
+      title: 'Passport Photo',
+      description: 'Resize photos for USA, UK, and Canada passport requirements',
+    },
   ];
 
   const pdfTools = [

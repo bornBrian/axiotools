@@ -5,6 +5,7 @@ import ImageConverter from '../components/ImageConverter';
 import ImageToPDF from '../components/ImageToPDF';
 import ImageWatermark from '../components/ImageWatermark';
 import ImageFilter from '../components/ImageFilter';
+import PassportPhotoResizer from '../components/PassportPhotoResizer';
 import './PageLayout.css';
 
 const ImageTools = ({ initialTool, onBackToDashboard }) => {
@@ -55,6 +56,12 @@ const ImageTools = ({ initialTool, onBackToDashboard }) => {
         >
           🎭 Filters
         </button>
+        <button
+          className={`tool-selector ${selectedTool === 'passport-photo' ? 'active' : ''}`}
+          onClick={() => setSelectedTool('passport-photo')}
+        >
+          🛂 Passport Photo
+        </button>
         </div>
 
         <div className="tool-content">
@@ -64,6 +71,7 @@ const ImageTools = ({ initialTool, onBackToDashboard }) => {
           {selectedTool === 'image-to-pdf' && <ImageToPDF />}
           {selectedTool === 'watermark' && <ImageWatermark />}
           {selectedTool === 'filter' && <ImageFilter />}
+          {selectedTool === 'passport-photo' && <PassportPhotoResizer />}
         </div>
       </div>
     </>
