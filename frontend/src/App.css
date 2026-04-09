@@ -47,9 +47,36 @@
   }
 }
 
+@media (max-width: 1000px) {
+  .right-panel {
+    display: none !important;
+  }
+}
+
 @media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 60px;
+    width: 100% !important;
+    max-width: 280px;
+    height: calc(100vh - 60px);
+  }
+
+  .main-content {
+    flex: 1;
+    width: 100%;
+  }
+
   .page-wrapper {
-    padding: 1rem;
+    padding: 1.5rem 1rem;
+    margin-top: 0;
   }
 
   .content-area {
@@ -58,6 +85,12 @@
 
   .right-panel {
     display: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-wrapper {
+    padding: 1rem 0.75rem;
   }
 }
 
