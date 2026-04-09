@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://axiomtools.best</loc>
+    <loc>https://axiomtools.best/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -10,13 +10,13 @@
     <loc>https://axiomtools.best/image-tools</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://axiomtools.best/pdf-tools</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://axiomtools.best/file-tools</loc>
@@ -27,8 +27,8 @@
   <url>
     <loc>https://axiomtools.best/settings</loc>
     <lastmod>2026-04-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://axiomtools.best/guides/</loc>
@@ -37,139 +37,7 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://axiomtools.best/guides/compress-pdf-for-university-application/</loc>
-    <lastmod>2026-04-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://axiomtools.best/guides/resize-passport-photo-online-usa-uk-canada/</loc>
-    <lastmod>2026-04-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://axiomtools.best/guides/convert-scanned-pdf-to-word-free-no-registration/</loc>
-    <lastmod>2026-04-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://axiomtools.best/guides/compress-documents-for-uk-companies-house/</loc>
-    <lastmod>2026-04-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://axiomtools.best/guides/resize-resume-pdf-for-linkedin-upload/</loc>
-    <lastmod>2026-04-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://axiomtools.best/guides/compress-portfolio-for-scholarship-application/</loc>
-    <lastmod>2026-04-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://axiomtools.best/guides/compress-pdf-to-200kb-for-government-portal/</loc>
-    <lastmod>2026-04-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://axiomtools.best/guides/compress-pdf-for-canada-visa-application/</loc>
-    <lastmod>2026-04-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://axiomtools.best/guides/compress-pdf-for-uk-visa-upload/</loc>
-    <lastmod>2026-04-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://axiomtools.best/guides/resize-photo-for-linkedin-profile-picture/</loc>
-    <lastmod>2026-04-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://axiomtools.best/guides/best-image-size-for-discord-profile-picture/</loc>
-    <lastmod>2026-04-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://axiomtools.best/guides/compress-pdf-for-email-attachment-25mb-limit/</loc>
-    <lastmod>2026-04-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://axiomtools.best/guides/convert-jpg-to-pdf-for-usa-immigration-documents/</loc>
-    <lastmod>2026-04-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://axiomtools.best/guides/reduce-scanned-document-size-without-losing-quality/</loc>
-    <lastmod>2026-04-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://axiomtools.best/guides/prepare-documents-for-australia-visa-upload/</loc>
-    <lastmod>2026-04-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://axiomtools.best/guides/how-to-merge-bank-statements-into-one-pdf/</loc>
-    <lastmod>2026-04-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://axiomtools.best/guides/compress-pdf-for-us-college-application/</loc>
-    <lastmod>2026-04-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://axiomtools.best/guides/compress-pdf-for-job-application-portal/</loc>
-    <lastmod>2026-04-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://axiomtools.best/guides/compress-pdf-for-us-immigration-uscis-upload/</loc>
-    <lastmod>2026-04-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://axiomtools.best/guides/compress-pdf-for-uk-home-office-upload/</loc>
-    <lastmod>2026-04-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://axiomtools.best/guides/compress-pdf-for-canada-ircc-upload/</loc>
-    <lastmod>2026-04-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://axiomtools.best/guides/compress-pdf-for-australia-immiaccount-upload/</loc>
-    <lastmod>2026-04-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://axiomtools.best/guides/compress-pdf-for-new-zealand-visa-upload/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -181,7 +49,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://axiomtools.best/guides/compress-resume-pdf-for-us-job-application/</loc>
+    <loc>https://axiomtools.best/guides/compress-documents-for-uk-companies-house/</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://axiomtools.best/guides/compress-pdf-for-australia-immiaccount-upload/</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://axiomtools.best/guides/compress-pdf-for-canada-ircc-upload/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -193,13 +73,133 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://axiomtools.best/guides/resize-passport-photo-for-us-visa-ds160/</loc>
+    <loc>https://axiomtools.best/guides/compress-pdf-for-canada-visa-application/</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://axiomtools.best/guides/compress-pdf-for-email-attachment-25mb-limit/</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://axiomtools.best/guides/compress-pdf-for-job-application-portal/</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://axiomtools.best/guides/compress-pdf-for-new-zealand-visa-upload/</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://axiomtools.best/guides/compress-pdf-for-uk-home-office-upload/</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://axiomtools.best/guides/compress-pdf-for-uk-visa-upload/</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://axiomtools.best/guides/compress-pdf-for-university-application/</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://axiomtools.best/guides/compress-pdf-for-us-college-application/</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://axiomtools.best/guides/compress-pdf-for-us-immigration-uscis-upload/</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://axiomtools.best/guides/compress-pdf-to-200kb-for-government-portal/</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://axiomtools.best/guides/compress-portfolio-for-scholarship-application/</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://axiomtools.best/guides/compress-resume-pdf-for-us-job-application/</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://axiomtools.best/guides/convert-jpg-to-pdf-for-usa-immigration-documents/</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://axiomtools.best/guides/convert-scanned-pdf-to-word-free-no-registration/</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://axiomtools.best/guides/how-to-merge-bank-statements-into-one-pdf/</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://axiomtools.best/guides/prepare-documents-for-australia-visa-upload/</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://axiomtools.best/guides/reduce-scanned-document-size-without-losing-quality/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://axiomtools.best/guides/resize-passport-photo-for-uk-visa-application/</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://axiomtools.best/guides/resize-passport-photo-for-us-visa-ds160/</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://axiomtools.best/guides/resize-passport-photo-online-usa-uk-canada/</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://axiomtools.best/guides/resize-photo-for-linkedin-profile-picture/</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://axiomtools.best/guides/resize-resume-pdf-for-linkedin-upload/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
