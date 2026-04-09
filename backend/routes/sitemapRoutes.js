@@ -1,5 +1,5 @@
 // Simple sitemap endpoint to bypass Vercel's SPA routing issue
-import express from 'express';
+const express = require('express');
 
 const router = express.Router();
 
@@ -40,4 +40,4 @@ router.get('/sitemap.xml', (req, res) => {
 </urlset>`);
 });
 
-export default router;
+module.exports = router;
