@@ -12,11 +12,25 @@ import AdBanner from './components/AdBanner';
 function App() {
   const [currentPage, setCurrentPage] = React.useState('dashboard');
   const [selectedTool, setSelectedTool] = React.useState(null);
-  const [sidebarOpen, setSidebarOpen] = React.useState(true);
+  const [sidebarOpen, setSidebarOpen] = React.useState(window.innerWidth > 768);
 
+  // Close sidebar on mobile on page change
+  React.useEffect(() => {
+    const handleResize = () => {
+      setSidebarOpen(window.innerWidth > 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Close sidebar when tool is selected on mobile
   const handleSelectTool = (page, tool = null) => {
     setSelectedTool(tool);
     setCurrentPage(page);
+    if (window.innerWidth <= 768) {
+      setSidebarOpen(false);
+    }
   };
 
   const renderPage = () => {
@@ -38,8 +52,21 @@ function App() {
 
   return (
     <div className="app-container">
-      <Sidebar currentPage={currentPage} onPageChange={setCurrentPage} isOpen={sidebarOpen} />
-      <div className="main-content">
+      <Sidebar 
+        currentPage={currentPage} 
+        onPageChange={(page) => {
+          setCurrentPage(page);
+          if (window.innerWidth <= 768) {
+            setSidebarOpen(false);
+          }
+        }} 
+        isOpen={sidebarOpen} 
+      />
+      <div className="main-content" onClick={() => {
+        if (window.innerWidth <= 768 && sidebarOpen) {
+          setSidebarOpen(false);
+        }
+      }}>
         <TopBar onToggleSidebar={() => setSidebarOpen(!sidebarOpen)} />
         <div className="content-area">
           <div className="page-wrapper">{renderPage()}</div>
