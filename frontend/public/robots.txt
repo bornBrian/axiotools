@@ -19,5 +19,5 @@ Allow: /
 # Allow crawl delay
 Crawl-delay: 1
 
-# Sitemap location
-Sitemap: https://axiomtools.best/sitemap.xml
+# Sitemap location (text format - simple and reliable)
+Sitemap: https://axiomtools.best/sitemap.txt
