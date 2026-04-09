@@ -12,12 +12,21 @@ import AdBanner from './components/AdBanner';
 function App() {
   const [currentPage, setCurrentPage] = React.useState('dashboard');
   const [selectedTool, setSelectedTool] = React.useState(null);
-  const [sidebarOpen, setSidebarOpen] = React.useState(window.innerWidth > 768);
+  const [sidebarOpen, setSidebarOpen] = React.useState(window.innerWidth >= 1024);
 
-  // Close sidebar on mobile on page change
+  // Responsive sidebar state management
   React.useEffect(() => {
     const handleResize = () => {
-      setSidebarOpen(window.innerWidth > 768);
+      const width = window.innerWidth;
+      // On desktop (≥1024px), keep sidebar open
+      // On tablet (768-1023px), keep sidebar open but collapsible
+      // On mobile (≤767px), close sidebar
+      if (width >= 1024) {
+        setSidebarOpen(true);
+      } else if (width < 768) {
+        setSidebarOpen(false);
+      }
+      // Tablet stays as current state
     };
 
     window.addEventListener('resize', handleResize);
@@ -28,7 +37,7 @@ function App() {
   const handleSelectTool = (page, tool = null) => {
     setSelectedTool(tool);
     setCurrentPage(page);
-    if (window.innerWidth <= 768) {
+    if (window.innerWidth < 768) {
       setSidebarOpen(false);
     }
   };
@@ -53,10 +62,11 @@ function App() {
   return (
     <div className="app-container">
       {/* Mobile Backdrop Overlay */}
-      {sidebarOpen && window.innerWidth <= 768 && (
+      {sidebarOpen && window.innerWidth < 768 && (
         <div 
           className="sidebar-backdrop"
           onClick={() => setSidebarOpen(false)}
+          role="presentation"
         />
       )}
       
@@ -64,17 +74,13 @@ function App() {
         currentPage={currentPage} 
         onPageChange={(page) => {
           setCurrentPage(page);
-          if (window.innerWidth <= 768) {
+          if (window.innerWidth < 768) {
             setSidebarOpen(false);
           }
         }} 
         isOpen={sidebarOpen} 
       />
-      <div className="main-content" onClick={() => {
-        if (window.innerWidth <= 768 && sidebarOpen) {
-          setSidebarOpen(false);
-        }
-      }}>
+      <div className="main-content">
         <TopBar onToggleSidebar={() => setSidebarOpen(!sidebarOpen)} />
         <div className="content-area">
           <div className="page-wrapper">{renderPage()}</div>
