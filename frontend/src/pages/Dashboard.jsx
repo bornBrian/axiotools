@@ -63,6 +63,12 @@ const Dashboard = ({ onSelectTool }) => {
       description: 'Convert DOCX files to PDF format',
     },
     {
+      id: 'pdf-to-word',
+      icon: '📘',
+      title: 'PDF to Word',
+      description: 'Convert PDF text to editable DOCX',
+    },
+    {
       id: 'compress',
       icon: '📦',
       title: 'Compress PDF',
@@ -96,6 +102,23 @@ const Dashboard = ({ onSelectTool }) => {
               onClick={() => onSelectTool('image-tools', tool.id)}
             />
           ))}
+        </div>
+      </section>
+
+      <section className="tool-section">
+        <div className="section-header">
+          <h2>📁 More Tools</h2>
+          <button className="view-all-btn" onClick={() => onSelectTool('file-tools', null)}>
+            View All →
+          </button>
+        </div>
+        <div className="tool-grid">
+          <ToolCard
+            icon="🔳"
+            title="QR Code Generator"
+            description="Create downloadable QR codes for any text or URL"
+            onClick={() => onSelectTool('file-tools', null)}
+          />
         </div>
       </section>
 

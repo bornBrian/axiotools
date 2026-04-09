@@ -13,6 +13,9 @@ router.post('/split', upload.single('file'), pdfController.splitPDF);
 // Convert Word document to PDF
 router.post('/word-to-pdf', upload.single('document'), pdfController.wordToPDF);
 
+// Convert PDF document to Word
+router.post('/pdf-to-word', upload.single('file'), pdfController.pdfToWord);
+
 // Compress PDF
 router.post('/compress', upload.single('file'), pdfController.compressPDF);
 

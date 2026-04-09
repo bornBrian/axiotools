@@ -226,19 +226,19 @@ const imageToPDF = async (req, res) => {
     // Process each image
     for (const file of files) {
       try {
-        const imageBuffer = fs.readFileSync(file.path);
-        const imageExtension = file.originalname.split('.').pop().toLowerCase();
-        
+        const metadata = await sharp(file.path).metadata();
         let image;
-        if (imageExtension === 'png') {
-          image = await pdfDoc.embedPng(imageBuffer);
-        } else if (imageExtension === 'webp') {
-          // Convert WebP to PNG first using sharp, then embed
+
+        if (metadata.format === 'png') {
           const pngBuffer = await sharp(file.path).png().toBuffer();
           image = await pdfDoc.embedPng(pngBuffer);
         } else {
-          // Handle JPEG and other formats
-          image = await pdfDoc.embedJpg(imageBuffer);
+          // Convert all non-PNG inputs to JPEG for reliable embedding
+          const jpgBuffer = await sharp(file.path)
+            .flatten({ background: '#ffffff' })
+            .jpeg({ quality: 92 })
+            .toBuffer();
+          image = await pdfDoc.embedJpg(jpgBuffer);
         }
 
         const page = pdfDoc.addPage([image.width, image.height]);

@@ -3,6 +3,7 @@ import PDFMerge from '../components/PDFMerge';
 import PDFSplit from '../components/PDFSplit';
 import WordToPDF from '../components/WordToPDF';
 import PDFCompressor from '../components/PDFCompressor';
+import PDFToWord from '../components/PDFToWord';
 import './PageLayout.css';
 
 const PDFTools = ({ initialTool }) => {
@@ -30,6 +31,12 @@ const PDFTools = ({ initialTool }) => {
           📝 Word to PDF
         </button>
         <button
+          className={`tool-selector ${selectedTool === 'pdf-to-word' ? 'active' : ''}`}
+          onClick={() => setSelectedTool('pdf-to-word')}
+        >
+          📘 PDF to Word
+        </button>
+        <button
           className={`tool-selector ${selectedTool === 'compress' ? 'active' : ''}`}
           onClick={() => setSelectedTool('compress')}
         >
@@ -41,6 +48,7 @@ const PDFTools = ({ initialTool }) => {
         {selectedTool === 'merge' && <PDFMerge />}
         {selectedTool === 'split' && <PDFSplit />}
         {selectedTool === 'word-to-pdf' && <WordToPDF />}
+        {selectedTool === 'pdf-to-word' && <PDFToWord />}
         {selectedTool === 'compress' && <PDFCompressor />}
       </div>
     </div>

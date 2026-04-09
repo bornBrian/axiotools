@@ -273,11 +273,71 @@ const wordToPDF = async (req, res) => {
     });
   }
 };
+
+// Convert PDF to Word document (text-focused conversion)
+const pdfToWord = async (req, res) => {
+  let uploadedFile = null;
+  try {
+    const file = req.file;
+    if (!file) {
+      return res.status(400).json({ success: false, error: 'No PDF file provided' });
+    }
+
+    uploadedFile = file.path;
+
+    const pdfParse = require('pdf-parse');
+    const { Document, Packer, Paragraph, HeadingLevel, TextRun } = require('docx');
+
+    const pdfBuffer = fs.readFileSync(file.path);
+    const parsed = await pdfParse(pdfBuffer);
+    const extractedText = (parsed.text || '').trim();
+
+    const lines = extractedText ? extractedText.split('\n').filter(Boolean) : ['No readable text found in PDF.'];
+
+    const children = [
+      new Paragraph({
+        heading: HeadingLevel.HEADING_1,
+        children: [new TextRun('Converted from PDF')],
+      }),
+      new Paragraph({
+        children: [new TextRun(`Source: ${file.originalname}`)],
+      }),
+      new Paragraph({ children: [] }),
+      ...lines.map((line) => new Paragraph({ children: [new TextRun(line)] })),
+    ];
+
+    const doc = new Document({
+      sections: [{ properties: {}, children }],
+    });
+
+    const outputPath = path.join(TEMP_DIR, `converted-${Date.now()}.docx`);
+    const docxBuffer = await Packer.toBuffer(doc);
+    fs.writeFileSync(outputPath, docxBuffer);
+
+    res.json({
+      success: true,
+      data: {
+        fileName: path.basename(outputPath),
+        outputPath: `/download/${path.basename(outputPath)}`,
+        message: 'PDF converted to Word successfully',
+      },
+    });
+
+    cleanupTempFiles(uploadedFile);
+  } catch (error) {
+    console.error('PDF to Word error:', error);
+    if (uploadedFile) cleanupTempFiles(uploadedFile);
+    res.status(500).json({
+      success: false,
+      error: 'Failed to convert PDF to Word. Please try another PDF.',
+    });
+  }
 };
 
 module.exports = {
   mergePDFs,
   splitPDF,
   wordToPDF,
+  pdfToWord,
   compressPDF,
 };

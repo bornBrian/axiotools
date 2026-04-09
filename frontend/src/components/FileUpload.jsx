@@ -5,6 +5,29 @@ const FileUpload = ({ onFileSelect, accept, multiple = false }) => {
   const [isDragging, setIsDragging] = React.useState(false);
   const fileInputRef = React.useRef(null);
 
+  const parseAcceptedTypes = React.useMemo(() => {
+    if (!accept) return [];
+    return accept.split(',').map((item) => item.trim().toLowerCase()).filter(Boolean);
+  }, [accept]);
+
+  const isFileAccepted = (file) => {
+    if (parseAcceptedTypes.length === 0) return true;
+
+    const fileName = (file.name || '').toLowerCase();
+    const mimeType = (file.type || '').toLowerCase();
+
+    return parseAcceptedTypes.some((rule) => {
+      if (rule.endsWith('/*')) {
+        const base = rule.replace('/*', '');
+        return mimeType.startsWith(`${base}/`);
+      }
+      if (rule.startsWith('.')) {
+        return fileName.endsWith(rule);
+      }
+      return mimeType === rule;
+    });
+  };
+
   const handleDragOver = (e) => {
     e.preventDefault();
     setIsDragging(true);
@@ -18,7 +41,7 @@ const FileUpload = ({ onFileSelect, accept, multiple = false }) => {
     e.preventDefault();
     setIsDragging(false);
 
-    const files = Array.from(e.dataTransfer.files);
+    const files = Array.from(e.dataTransfer.files).filter(isFileAccepted);
     onFileSelect(files);
   };
 

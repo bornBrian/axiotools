@@ -1,4 +1,5 @@
 import React from 'react';
+import QRCodeGenerator from '../components/QRCodeGenerator';
 
 const FileTools = () => {
   const imageTools = [
@@ -14,7 +15,12 @@ const FileTools = () => {
     { emoji: '✂️', name: 'Merge PDFs', desc: 'Combine multiple PDF files into one' },
     { emoji: '📏', name: 'Split PDF', desc: 'Extract pages from PDF documents' },
     { emoji: '📝', name: 'Word to PDF', desc: 'Convert DOCX and DOC files to PDF' },
+    { emoji: '📘', name: 'PDF to Word', desc: 'Convert PDF text to editable DOCX' },
     { emoji: '📦', name: 'Compress PDF', desc: 'Reduce PDF file size while maintaining quality' },
+  ];
+
+  const extraTools = [
+    { emoji: '🔳', name: 'QR Code Generator', desc: 'Create downloadable PNG QR codes for text and URLs' },
   ];
 
   return (
@@ -43,6 +49,24 @@ const FileTools = () => {
               <p style={{ fontSize: '13px', color: 'var(--text-light)' }}>Your files are processed securely and ready to download instantly</p>
             </div>
           </div>
+        </section>
+
+        {/* Extra Tools Section */}
+        <section style={{ marginBottom: '3rem', paddingBottom: '2rem', borderBottom: '1px solid var(--border-color)' }}>
+          <h2 style={{ marginBottom: '1rem' }}>🧰 Extra Tools</h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1rem' }}>
+            {extraTools.map((tool, idx) => (
+              <div key={idx} style={{ padding: '1.25rem', backgroundColor: 'var(--bg-secondary)', borderRadius: '8px', border: '1px solid var(--border-color)' }}>
+                <div style={{ fontSize: '24px', marginBottom: '0.5rem' }}>{tool.emoji}</div>
+                <h4 style={{ marginBottom: '0.5rem', fontSize: '15px', fontWeight: '600' }}>{tool.name}</h4>
+                <p style={{ fontSize: '13px', color: 'var(--text-light)' }}>{tool.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section style={{ marginBottom: '2rem' }}>
+          <QRCodeGenerator />
         </section>
 
         {/* Image Tools Section */}
