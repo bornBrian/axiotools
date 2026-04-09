@@ -20,4 +20,4 @@ Allow: /
 Crawl-delay: 1
 
 # Sitemap location (text format - simple and reliable)
-Sitemap: https://axiomtools.best/sitemap.txt
+Sitemap: https://axiomtools.best/sitemap.xml

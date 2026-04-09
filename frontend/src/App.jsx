@@ -12,12 +12,14 @@ import AdBanner from './components/AdBanner';
 function App() {
   const [currentPage, setCurrentPage] = React.useState('dashboard');
   const [selectedTool, setSelectedTool] = React.useState(null);
+  const [isMobile, setIsMobile] = React.useState(window.innerWidth < 768);
   const [sidebarOpen, setSidebarOpen] = React.useState(window.innerWidth >= 1024);
 
   // Responsive sidebar state management
   React.useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
+      setIsMobile(width < 768);
       // On desktop (≥1024px), keep sidebar open
       // On tablet (768-1023px), keep sidebar open but collapsible
       // On mobile (≤767px), close sidebar
@@ -62,7 +64,7 @@ function App() {
   return (
     <div className="app-container">
       {/* Mobile Backdrop Overlay */}
-      {sidebarOpen && window.innerWidth < 768 && (
+      {sidebarOpen && isMobile && (
         <div 
           className="sidebar-backdrop"
           onClick={() => setSidebarOpen(false)}
@@ -74,7 +76,7 @@ function App() {
         currentPage={currentPage} 
         onPageChange={(page) => {
           setCurrentPage(page);
-          if (window.innerWidth < 768) {
+          if (isMobile) {
             setSidebarOpen(false);
           }
         }} 

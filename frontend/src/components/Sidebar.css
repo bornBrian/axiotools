@@ -15,6 +15,7 @@
   transition: all 0.3s ease;
   z-index: 100;
   position: relative;
+  overscroll-behavior: contain;
 }
 
 /* ========================================
@@ -71,7 +72,7 @@
     position: fixed;
     left: 0;
     top: 0;
-    width: 260px;
+    width: min(84vw, 300px);
     height: 100vh;
     z-index: 1000;
     transform: translateX(-100%);
@@ -111,18 +112,14 @@
   }
 }
 
-.logo-placeholder {
+.sidebar-logo {
   width: 40px;
   height: 40px;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: 700;
-  font-size: 14px;
+  border-radius: 10px;
   flex-shrink: 0;
+  object-fit: contain;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .logo-text {
@@ -132,8 +129,18 @@
 }
 
 @media (max-width: 767px) {
+  .sidebar-header {
+    padding: 0 0.875rem;
+    margin-bottom: 1rem;
+  }
+
+  .sidebar-logo {
+    width: 36px;
+    height: 36px;
+  }
+
   .logo-text {
-    font-size: 15px;
+    font-size: 14px;
   }
 }
 
@@ -183,6 +190,7 @@
   transition: all 0.2s ease;
   font-weight: 500;
   text-align: left;
+  min-width: 0;
 }
 
 .menu-item:hover {

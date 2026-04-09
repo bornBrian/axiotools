@@ -35,8 +35,25 @@
 .topbar-left {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
   flex: 1;
+}
+
+.topbar-brand {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  min-width: 0;
+}
+
+.topbar-logo {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 /* ========================================
@@ -76,6 +93,12 @@
 /* Show hamburger on tablet & mobile */
 @media (max-width: 1023px) {
   .hamburger-btn {
+    display: flex;
+  }
+}
+
+@media (max-width: 767px) {
+  .topbar-brand {
     display: flex;
   }
 }
@@ -153,6 +176,10 @@
   text-align: center;
 }
 
+.upload-icon {
+  line-height: 1;
+}
+
 .upload-btn:hover {
   box-shadow: var(--shadow-md);
   transform: translateY(-2px);
@@ -164,8 +191,12 @@
 
 @media (max-width: 767px) {
   .upload-btn {
-    padding: 0.5rem 0.75rem;
+    padding: 0.5rem 0.7rem;
     font-size: 13px;
+  }
+
+  .upload-label {
+    display: none;
   }
 }
 
@@ -214,6 +245,6 @@
   }
 
   .topbar-left {
-    flex: 0;
+    flex: 1;
   }
 }

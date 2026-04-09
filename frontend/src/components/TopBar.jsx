@@ -10,11 +10,16 @@ const TopBar = ({ onToggleSidebar }) => {
           <span></span>
           <span></span>
         </button>
+        <div className="topbar-brand">
+          <img src="/logo.svg" alt="AxioTools" className="topbar-logo" />
+          <span>AxioTools</span>
+        </div>
       </div>
 
       <div className="topbar-right">
         <button className="upload-btn">
-          <span>📤</span> Upload File
+          <span className="upload-icon">📤</span>
+          <span className="upload-label">Upload File</span>
         </button>
       </div>
     </header>

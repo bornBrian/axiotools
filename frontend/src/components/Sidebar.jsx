@@ -14,7 +14,7 @@ const Sidebar = ({ currentPage, onPageChange, isOpen }) => {
     <aside className={`sidebar ${isOpen ? 'open' : 'closed'}`}>
       {/* Logo Area */}
       <div className="sidebar-header">
-        <div className="logo-placeholder">AXIO</div>
+        <img className="sidebar-logo" src="/logo.svg" alt="AxioTools logo" />
         <span className="logo-text">AxioTools</span>
       </div>
 

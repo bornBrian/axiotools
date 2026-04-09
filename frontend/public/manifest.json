@@ -1,0 +1,17 @@
+{
+  "short_name": "AxioTools",
+  "name": "AxioTools - Free Image & PDF Tools",
+  "description": "Compress images, convert files, merge PDFs, and more.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#16a34a",
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
