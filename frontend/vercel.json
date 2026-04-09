@@ -1,6 +1,11 @@
 {
   "redirects": [
     {
+      "source": "/sitemap.xml",
+      "destination": "https://axiotools.onrender.com/sitemap.xml",
+      "permanent": false
+    },
+    {
       "source": "/:path((?!.*\\.xml$|.*\\.json$|.*\\.txt$|.*\\.ico$|.*\\.svg$|.*\\.png$).*)",
       "destination": "/index.html"
     }
