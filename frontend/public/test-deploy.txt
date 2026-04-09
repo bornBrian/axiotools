@@ -1,0 +1,2 @@
+DEPLOYMENT TEST - Generated $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')
+If you see this file, Vercel is serving fresh builds from public/
