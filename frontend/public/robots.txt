@@ -1,18 +1,23 @@
 User-agent: *
 Allow: /
+
+# Disallow sensitive paths
 Disallow: /api/
 Disallow: /admin/
 Disallow: /temp/
+Disallow: /.git/
+Disallow: /node_modules/
 
-# Allow sitemap
-Sitemap: https://axiotools.com/sitemap.xml
-
-# Crawl delay
-Crawl-delay: 1
-
-# User agents
+# Google-specific
 User-agent: Googlebot
 Allow: /
 
+# Bing-specific
 User-agent: Bingbot
 Allow: /
+
+# Allow crawl delay
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://axiomtools.best/sitemap.xml
