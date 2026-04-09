@@ -351,24 +351,29 @@ const applyFilter = async (req, res) => {
         transform = transform.grayscale();
         break;
       case 'sepia':
-        // Sepia effect using color matrix operations
-        transform = transform
-          .modulate({ saturation: 0 })
-          .modulate({ brightness: 1.1 });
+        transform = transform.recomb([
+          [0.393, 0.769, 0.189],
+          [0.349, 0.686, 0.168],
+          [0.272, 0.534, 0.131],
+        ]);
         break;
       case 'blur':
-        transform = transform.blur(5);
+        transform = transform.blur(8);
         break;
       case 'sharpen':
-        transform = transform.sharpen({ sigma: 2 });
+        transform = transform.sharpen();
         break;
       case 'invert':
         transform = transform.negate();
         break;
       case 'vintage':
         transform = transform
-          .modulate({ hue: 30, saturation: 0.5, brightness: 0.95 })
-          .blur(0.5);
+          .modulate({ hue: 22, saturation: 0.65, brightness: 1.05 })
+          .recomb([
+            [1.03, 0.02, 0],
+            [0, 0.98, 0],
+            [0, 0.04, 0.92],
+          ]);
         break;
       default:
         transform = transform.grayscale();

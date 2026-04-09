@@ -31,7 +31,14 @@ const fileFilter = (req, file, cb) => {
     'application/vnd.openxmlformats-officedocument.wordprocessingml.document', // .docx files
   ];
 
-  if (allowedMimeTypes.includes(file.mimetype)) {
+  const allowedWordExtensions = ['.doc', '.docx'];
+  const extension = path.extname(file.originalname || '').toLowerCase();
+  const mimeType = (file.mimetype || '').toLowerCase();
+
+  const isAllowedByMime = allowedMimeTypes.includes(mimeType);
+  const isWordByExtension = allowedWordExtensions.includes(extension);
+
+  if (isAllowedByMime || isWordByExtension) {
     cb(null, true);
   } else {
     cb(new Error('Invalid file type. Only images (JPEG, PNG, WebP), PDF, and Word documents (DOC, DOCX) are allowed.'), false);

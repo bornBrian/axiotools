@@ -39,7 +39,8 @@ const ImageFilter = () => {
         const downloadResponse = await fetch(`https://axiotools.onrender.com${data.data.outputPath}`);
         const blob = await downloadResponse.blob();
         const url = window.URL.createObjectURL(blob);
-        setResult({ url, filename: 'filtered-image.png' });
+        const baseName = files[0].name.replace(/\.[^/.]+$/, '');
+        setResult({ url, filename: `${baseName}-${filterType}.png` });
       } else {
         alert('Error: ' + (data.error || 'Failed to apply filter'));
       }
