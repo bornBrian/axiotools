@@ -1,13 +1,8 @@
 {
-  "headers": [
+  "redirects": [
     {
-      "source": "/sitemap.*",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/xml; charset=utf-8"
-        }
-      ]
+      "source": "/:path((?!.*\\.xml$|.*\\.json$|.*\\.txt$|.*\\.ico$|.*\\.svg$|.*\\.png$).*)",
+      "destination": "/index.html"
     }
   ]
 }
