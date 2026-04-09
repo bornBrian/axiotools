@@ -20,7 +20,7 @@ const PDFMerge = () => {
         formData.append('files', file);
       });
 
-      const response = await fetch('http://localhost:5000/api/pdf/merge', {
+      const response = await fetch('https://axiotools.onrender.com/api/pdf/merge', {
         method: 'POST',
         body: formData,
       });
@@ -94,7 +94,7 @@ const PDFMerge = () => {
               </div>
             </div>
 
-            <a href={`http://localhost:5000${result.outputPath}`} download className="download-btn">
+            <a href={`https://axiotools.onrender.com${result.outputPath}`} download className="download-btn">
               📥 Download Merged PDF
             </a>
 

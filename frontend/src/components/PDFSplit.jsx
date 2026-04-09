@@ -15,7 +15,7 @@ const PDFSplit = () => {
       const formData = new FormData();
       formData.append('file', files[0]);
 
-      const response = await fetch('http://localhost:5000/api/pdf/split', {
+      const response = await fetch('https://axiotools.onrender.com/api/pdf/split', {
         method: 'POST',
         body: formData,
       });
@@ -75,7 +75,7 @@ const PDFSplit = () => {
                 {result.splitFiles.map((file, idx) => (
                   <a
                     key={idx}
-                    href={`http://localhost:5000${file.outputPath}`}
+                    href={`https://axiotools.onrender.com${file.outputPath}`}
                     download
                     className="file-download-card"
                   >

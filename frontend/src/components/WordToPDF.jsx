@@ -18,14 +18,14 @@ const WordToPDF = () => {
       const formData = new FormData();
       formData.append('document', files[0]);
 
-      const response = await fetch('http://localhost:5000/api/pdf/word-to-pdf', {
+      const response = await fetch('https://axiotools.onrender.com/api/pdf/word-to-pdf', {
         method: 'POST',
         body: formData,
       });
 
       const data = await response.json();
       if (data.success) {
-        const downloadResponse = await fetch(`http://localhost:5000${data.data.outputPath}`);
+        const downloadResponse = await fetch(`https://axiotools.onrender.com${data.data.outputPath}`);
         const blob = await downloadResponse.blob();
         const url = window.URL.createObjectURL(blob);
         const filename = files[0].name.replace(/\.[^/.]+$/, '.pdf');

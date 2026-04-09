@@ -19,7 +19,7 @@ const ImageConverter = () => {
       formData.append('file', files[0]);
       formData.append('format', format);
 
-      const response = await fetch('http://localhost:5000/api/image/convert', {
+      const response = await fetch('https://axiotools.onrender.com/api/image/convert', {
         method: 'POST',
         body: formData,
       });
@@ -101,7 +101,7 @@ const ImageConverter = () => {
               </div>
             </div>
 
-            <a href={`http://localhost:5000${result.outputPath}`} download className="download-btn">
+            <a href={`https://axiotools.onrender.com${result.outputPath}`} download className="download-btn">
               📥 Download Converted Image
             </a>
 

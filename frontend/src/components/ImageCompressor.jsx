@@ -17,7 +17,7 @@ const ImageCompressor = () => {
       formData.append('file', files[0]);
       formData.append('level', compressionLevel);
 
-      const response = await fetch('http://localhost:5000/api/image/compress', {
+      const response = await fetch('https://axiotools.onrender.com/api/image/compress', {
         method: 'POST',
         body: formData,
       });
@@ -99,7 +99,7 @@ const ImageCompressor = () => {
               </div>
             </div>
 
-            <a href={`http://localhost:5000${result.outputPath}`} download className="download-btn">
+            <a href={`https://axiotools.onrender.com${result.outputPath}`} download className="download-btn">
               📥 Download Compressed Image
             </a>
 

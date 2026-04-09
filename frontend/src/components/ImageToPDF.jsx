@@ -18,14 +18,14 @@ const ImageToPDF = () => {
       const formData = new FormData();
       files.forEach(file => formData.append('images', file));
 
-      const response = await fetch('http://localhost:5000/api/image/to-pdf', {
+      const response = await fetch('https://axiotools.onrender.com/api/image/to-pdf', {
         method: 'POST',
         body: formData,
       });
 
       const data = await response.json();
       if (data.success) {
-        const downloadResponse = await fetch(`http://localhost:5000${data.data.outputPath}`);
+        const downloadResponse = await fetch(`https://axiotools.onrender.com${data.data.outputPath}`);
         const blob = await downloadResponse.blob();
         const url = window.URL.createObjectURL(blob);
         setResult({ url, filename: data.data.fileName });

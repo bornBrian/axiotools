@@ -27,14 +27,14 @@ const ImageWatermark = () => {
       formData.append('text', watermarkText);
       formData.append('opacity', opacity);
 
-      const response = await fetch('http://localhost:5000/api/image/watermark', {
+      const response = await fetch('https://axiotools.onrender.com/api/image/watermark', {
         method: 'POST',
         body: formData,
       });
 
       const data = await response.json();
       if (data.success) {
-        const downloadResponse = await fetch(`http://localhost:5000${data.data.outputPath}`);
+        const downloadResponse = await fetch(`https://axiotools.onrender.com${data.data.outputPath}`);
         const blob = await downloadResponse.blob();
         const url = window.URL.createObjectURL(blob);
         setResult({ url, filename: 'watermarked-image.png' });

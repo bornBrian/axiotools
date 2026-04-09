@@ -19,14 +19,14 @@ const PDFCompressor = () => {
       formData.append('file', files[0]);
       formData.append('quality', 'medium');
 
-      const response = await fetch('http://localhost:5000/api/pdf/compress', {
+      const response = await fetch('https://axiotools.onrender.com/api/pdf/compress', {
         method: 'POST',
         body: formData,
       });
 
       const data = await response.json();
       if (data.success) {
-        const downloadResponse = await fetch(`http://localhost:5000${data.data.outputPath}`);
+        const downloadResponse = await fetch(`https://axiotools.onrender.com${data.data.outputPath}`);
         const blob = await downloadResponse.blob();
         const url = window.URL.createObjectURL(blob);
         setResult({ 

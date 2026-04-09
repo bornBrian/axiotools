@@ -37,7 +37,7 @@ const ImageResizer = () => {
       formData.append('height', height);
       formData.append('maintainAspectRatio', maintainRatio);
 
-      const response = await fetch('http://localhost:5000/api/image/resize', {
+      const response = await fetch('https://axiotools.onrender.com/api/image/resize', {
         method: 'POST',
         body: formData,
       });
@@ -146,7 +146,7 @@ const ImageResizer = () => {
               </div>
             </div>
 
-            <a href={`http://localhost:5000${result.outputPath}`} download className="download-btn">
+            <a href={`https://axiotools.onrender.com${result.outputPath}`} download className="download-btn">
               📥 Download Resized Image
             </a>
 
