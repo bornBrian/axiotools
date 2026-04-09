@@ -27,12 +27,14 @@ const fileFilter = (req, file, cb) => {
     'image/png',
     'image/webp',
     'application/pdf',
+    'application/msword', // .doc files
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document', // .docx files
   ];
 
   if (allowedMimeTypes.includes(file.mimetype)) {
     cb(null, true);
   } else {
-    cb(new Error('Invalid file type. Only images (JPEG, PNG, WebP) and PDF are allowed.'), false);
+    cb(new Error('Invalid file type. Only images (JPEG, PNG, WebP), PDF, and Word documents (DOC, DOCX) are allowed.'), false);
   }
 };
 
