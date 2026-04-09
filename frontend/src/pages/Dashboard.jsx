@@ -173,6 +173,27 @@ const Dashboard = ({ onSelectTool }) => {
           </div>
         </div>
       </section>
+
+      <section className="seo-guides-section">
+        <div className="section-header">
+          <h2>🌍 Popular How-To Guides</h2>
+          <a className="view-all-btn guide-link-btn" href="/guides/">View All Guides →</a>
+        </div>
+        <div className="seo-guides-grid">
+          <a href="/guides/compress-pdf-for-university-application/" className="seo-guide-card">
+            <h3>Compress PDF for University Application</h3>
+            <p>Reduce file size for scholarship and admission portals without losing readability.</p>
+          </a>
+          <a href="/guides/resize-passport-photo-online-usa-uk-canada/" className="seo-guide-card">
+            <h3>Resize Passport Photo (USA/UK/Canada)</h3>
+            <p>Use country presets to generate passport-size images quickly.</p>
+          </a>
+          <a href="/guides/convert-scanned-pdf-to-word-free-no-registration/" className="seo-guide-card">
+            <h3>Convert Scanned PDF to Word</h3>
+            <p>Turn scanned documents into editable text with a free no-signup flow.</p>
+          </a>
+        </div>
+      </section>
     </div>
   );
 };
