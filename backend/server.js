@@ -12,6 +12,7 @@ const { scheduleCleanup } = require('./utils/cleanup');
 const imageRoutes = require('./routes/image');
 const pdfRoutes = require('./routes/pdf');
 const downloadRoutes = require('./routes/download');
+const sitemapRoutes = require('./routes/sitemapRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -35,6 +36,7 @@ app.get('/api/health', (req, res) => {
 app.use('/api/image', imageRoutes);
 app.use('/api/pdf', pdfRoutes);
 app.use('/download', downloadRoutes);
+app.use('/', sitemapRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
