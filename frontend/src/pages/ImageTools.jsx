@@ -7,12 +7,18 @@ import ImageWatermark from '../components/ImageWatermark';
 import ImageFilter from '../components/ImageFilter';
 import './PageLayout.css';
 
-const ImageTools = ({ initialTool }) => {
+const ImageTools = ({ initialTool, onBackToDashboard }) => {
   const [selectedTool, setSelectedTool] = React.useState(initialTool || 'compress');
 
   return (
-    <div className="page-layout">
-      <div className="tool-sidebar">
+    <>
+      {onBackToDashboard && (
+        <button className="page-back-btn" onClick={onBackToDashboard}>
+          ← Back to Dashboard
+        </button>
+      )}
+      <div className="page-layout">
+        <div className="tool-sidebar">
         <button
           className={`tool-selector ${selectedTool === 'compress' ? 'active' : ''}`}
           onClick={() => setSelectedTool('compress')}
@@ -49,17 +55,18 @@ const ImageTools = ({ initialTool }) => {
         >
           🎭 Filters
         </button>
-      </div>
+        </div>
 
-      <div className="tool-content">
-        {selectedTool === 'compress' && <ImageCompressor />}
-        {selectedTool === 'resize' && <ImageResizer />}
-        {selectedTool === 'convert' && <ImageConverter />}
-        {selectedTool === 'image-to-pdf' && <ImageToPDF />}
-        {selectedTool === 'watermark' && <ImageWatermark />}
-        {selectedTool === 'filter' && <ImageFilter />}
+        <div className="tool-content">
+          {selectedTool === 'compress' && <ImageCompressor />}
+          {selectedTool === 'resize' && <ImageResizer />}
+          {selectedTool === 'convert' && <ImageConverter />}
+          {selectedTool === 'image-to-pdf' && <ImageToPDF />}
+          {selectedTool === 'watermark' && <ImageWatermark />}
+          {selectedTool === 'filter' && <ImageFilter />}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

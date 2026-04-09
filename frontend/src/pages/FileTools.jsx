@@ -1,7 +1,7 @@
 import React from 'react';
 import QRCodeGenerator from '../components/QRCodeGenerator';
 
-const FileTools = () => {
+const FileTools = ({ onBackToDashboard }) => {
   const imageTools = [
     { emoji: '📸', name: 'Compress Image', desc: 'Reduce file size while maintaining quality' },
     { emoji: '📐', name: 'Resize Image', desc: 'Change image dimensions safely' },
@@ -25,6 +25,11 @@ const FileTools = () => {
 
   return (
     <div className="tool-page">
+      {onBackToDashboard && (
+        <button className="page-back-btn" onClick={onBackToDashboard}>
+          ← Back to Dashboard
+        </button>
+      )}
       <h1>📚 File Tools Guide</h1>
       <p className="page-description">All your file processing tools in one place</p>
 

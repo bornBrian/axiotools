@@ -49,11 +49,11 @@ function App() {
       case 'dashboard':
         return <Dashboard onSelectTool={handleSelectTool} />;
       case 'image-tools':
-        return <ImageTools initialTool={selectedTool} />;
+        return <ImageTools initialTool={selectedTool} onBackToDashboard={() => setCurrentPage('dashboard')} />;
       case 'pdf-tools':
-        return <PDFTools initialTool={selectedTool} />;
+        return <PDFTools initialTool={selectedTool} onBackToDashboard={() => setCurrentPage('dashboard')} />;
       case 'file-tools':
-        return <FileTools />;
+        return <FileTools onBackToDashboard={() => setCurrentPage('dashboard')} />;
       case 'settings':
         return <Settings />;
       default:

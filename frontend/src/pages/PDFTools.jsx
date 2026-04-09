@@ -6,12 +6,18 @@ import PDFCompressor from '../components/PDFCompressor';
 import PDFToWord from '../components/PDFToWord';
 import './PageLayout.css';
 
-const PDFTools = ({ initialTool }) => {
+const PDFTools = ({ initialTool, onBackToDashboard }) => {
   const [selectedTool, setSelectedTool] = React.useState(initialTool || 'merge');
 
   return (
-    <div className="page-layout">
-      <div className="tool-sidebar">
+    <>
+      {onBackToDashboard && (
+        <button className="page-back-btn" onClick={onBackToDashboard}>
+          ← Back to Dashboard
+        </button>
+      )}
+      <div className="page-layout">
+        <div className="tool-sidebar">
         <button
           className={`tool-selector ${selectedTool === 'merge' ? 'active' : ''}`}
           onClick={() => setSelectedTool('merge')}
@@ -42,16 +48,17 @@ const PDFTools = ({ initialTool }) => {
         >
           📦 Compress PDF
         </button>
-      </div>
+        </div>
 
-      <div className="tool-content">
-        {selectedTool === 'merge' && <PDFMerge />}
-        {selectedTool === 'split' && <PDFSplit />}
-        {selectedTool === 'word-to-pdf' && <WordToPDF />}
-        {selectedTool === 'pdf-to-word' && <PDFToWord />}
-        {selectedTool === 'compress' && <PDFCompressor />}
+        <div className="tool-content">
+          {selectedTool === 'merge' && <PDFMerge />}
+          {selectedTool === 'split' && <PDFSplit />}
+          {selectedTool === 'word-to-pdf' && <WordToPDF />}
+          {selectedTool === 'pdf-to-word' && <PDFToWord />}
+          {selectedTool === 'compress' && <PDFCompressor />}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
