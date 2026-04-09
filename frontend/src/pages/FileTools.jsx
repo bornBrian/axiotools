@@ -1,5 +1,6 @@
 import React from 'react';
 import QRCodeGenerator from '../components/QRCodeGenerator';
+import './PageLayout.css';
 
 const FileTools = ({ onBackToDashboard }) => {
   const imageTools = [
@@ -27,7 +28,7 @@ const FileTools = ({ onBackToDashboard }) => {
     <div className="tool-page">
       {onBackToDashboard && (
         <button className="page-back-btn" onClick={onBackToDashboard}>
-          ← Back to Dashboard
+          ← Back to Main Page
         </button>
       )}
       <h1>📚 File Tools Guide</h1>

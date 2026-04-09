@@ -14,7 +14,7 @@ const ImageTools = ({ initialTool, onBackToDashboard }) => {
     <>
       {onBackToDashboard && (
         <button className="page-back-btn" onClick={onBackToDashboard}>
-          ← Back to Dashboard
+          ← Back to Main Page
         </button>
       )}
       <div className="page-layout">

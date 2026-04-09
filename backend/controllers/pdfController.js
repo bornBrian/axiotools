@@ -5,6 +5,109 @@ const path = require('path');
 const { TEMP_DIR } = require('../config/constants');
 const { cleanupTempFiles } = require('../utils/cleanup');
 
+const decodeHtmlEntities = (text = '') => {
+  const entities = {
+    '&nbsp;': ' ',
+    '&amp;': '&',
+    '&lt;': '<',
+    '&gt;': '>',
+    '&quot;': '"',
+    '&#39;': "'",
+  };
+
+  return text
+    .replace(/&(nbsp|amp|lt|gt|quot);|&#39;/g, (match) => entities[match] || match)
+    .replace(/&#(\d+);/g, (_, code) => String.fromCharCode(Number(code)));
+};
+
+const extractBlocksFromHtml = (html = '') => {
+  const normalizedHtml = html
+    .replace(/\r\n/g, '\n')
+    .replace(/<\s*br\s*\/?\s*>/gi, '\n')
+    .replace(/<\s*\/\s*p\s*>/gi, '</p>\n')
+    .replace(/<\s*\/\s*li\s*>/gi, '</li>\n')
+    .replace(/<\s*\/\s*h([1-6])\s*>/gi, '</h$1>\n');
+
+  const blocks = [];
+  const blockRegex = /<(h[1-6]|p|li|blockquote)[^>]*>([\s\S]*?)<\/\1>/gi;
+  let match;
+
+  while ((match = blockRegex.exec(normalizedHtml)) !== null) {
+    const blockType = match[1].toLowerCase();
+    const plainText = decodeHtmlEntities(match[2].replace(/<[^>]+>/g, ''))
+      .replace(/\s+/g, ' ')
+      .trim();
+
+    if (!plainText) continue;
+    blocks.push({ type: blockType, text: plainText });
+  }
+
+  if (blocks.length > 0) {
+    return blocks;
+  }
+
+  const fallbackText = decodeHtmlEntities(normalizedHtml.replace(/<[^>]+>/g, ''));
+  return fallbackText
+    .split(/\n\s*\n+/)
+    .map((paragraph) => paragraph.trim())
+    .filter(Boolean)
+    .map((paragraph) => ({ type: 'p', text: paragraph }));
+};
+
+const buildParagraphsFromPdfText = (rawText = '') => {
+  const normalized = rawText.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+  const lines = normalized.split('\n').map((line) => line.trim());
+  const paragraphs = [];
+  let buffer = [];
+
+  const flushBuffer = () => {
+    if (buffer.length === 0) return;
+    const paragraph = buffer.join(' ').replace(/\s+/g, ' ').trim();
+    if (paragraph) paragraphs.push(paragraph);
+    buffer = [];
+  };
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+
+    if (!line) {
+      flushBuffer();
+      continue;
+    }
+
+    const isBullet = /^([•\-*]|\d+[.)])\s+/.test(line);
+    if (isBullet) {
+      flushBuffer();
+      paragraphs.push(line);
+      continue;
+    }
+
+    const current = line.replace(/\s+/g, ' ').trim();
+
+    if (buffer.length > 0) {
+      const previous = buffer[buffer.length - 1];
+      const previousEndsSentence = /[.!?:;”"]$/.test(previous);
+      const currentStartsLowerCase = /^[a-z]/.test(current);
+      const previousEndsHyphen = /-$/.test(previous);
+
+      if (previousEndsHyphen) {
+        buffer[buffer.length - 1] = previous.slice(0, -1);
+        buffer.push(current);
+      } else if (!previousEndsSentence || currentStartsLowerCase) {
+        buffer.push(current);
+      } else {
+        flushBuffer();
+        buffer.push(current);
+      }
+    } else {
+      buffer.push(current);
+    }
+  }
+
+  flushBuffer();
+  return paragraphs;
+};
+
 // Merge multiple PDF files
 const mergePDFs = async (req, res) => {
   try {
@@ -177,14 +280,12 @@ const wordToPDF = async (req, res) => {
     uploadedFile = file.path;
     const outputPath = path.join(TEMP_DIR, `converted-${Date.now()}.pdf`);
     
-    // Use mammoth to extract content from DOCX
     const mammoth = require('mammoth');
     const PDFDocument = require('pdfkit');
     
     try {
-      // Extract HTML from Word document
-      const result = await mammoth.extractRawText({ path: file.path });
-      const text = result.value;
+      const htmlResult = await mammoth.convertToHtml({ path: file.path });
+      const blocks = extractBlocksFromHtml(htmlResult.value || '');
 
       // Create PDF from extracted text
       const doc = new PDFDocument({
@@ -195,21 +296,50 @@ const wordToPDF = async (req, res) => {
       const writeStream = fs.createWriteStream(outputPath);
       doc.pipe(writeStream);
 
-      // Add title and content to PDF
       doc.fontSize(18).font('Helvetica-Bold').text(file.originalname.replace(/\.[^.]+$/, ''), { underline: true });
       doc.moveDown(0.5);
-      
+
       doc.fontSize(11).font('Helvetica');
-      
-      if (text) {
-        // Split text into lines and add to PDF
-        const lines = text.split('\n');
-        lines.forEach((line) => {
-          if (line.trim()) {
-            doc.text(line, { align: 'left', wordBreak: true });
-          } else {
-            doc.moveDown(0.2);
+
+      if (blocks.length > 0) {
+        blocks.forEach((block) => {
+          if (block.type.startsWith('h')) {
+            const level = Number(block.type.replace('h', ''));
+            const headingSize = Math.max(12, 20 - level * 2);
+            doc.moveDown(0.35);
+            doc.font('Helvetica-Bold').fontSize(headingSize).text(block.text, {
+              align: 'left',
+              lineGap: 2,
+            });
+            doc.font('Helvetica').fontSize(11);
+            doc.moveDown(0.15);
+            return;
           }
+
+          if (block.type === 'li') {
+            doc.text(`• ${block.text}`, {
+              align: 'left',
+              indent: 12,
+              lineGap: 2,
+            });
+            return;
+          }
+
+          if (block.type === 'blockquote') {
+            doc.text(block.text, {
+              align: 'left',
+              indent: 16,
+              lineGap: 2,
+            });
+            doc.moveDown(0.2);
+            return;
+          }
+
+          doc.text(block.text, {
+            align: 'left',
+            lineGap: 2,
+            paragraphGap: 6,
+          });
         });
       } else {
         doc.text('Document converted successfully (content extraction in progress)');
@@ -274,7 +404,7 @@ const wordToPDF = async (req, res) => {
   }
 };
 
-// Convert PDF to Word document (text-focused conversion)
+// Convert PDF to Word document (improved text structure preservation)
 const pdfToWord = async (req, res) => {
   let uploadedFile = null;
   try {
@@ -286,13 +416,12 @@ const pdfToWord = async (req, res) => {
     uploadedFile = file.path;
 
     const pdfParse = require('pdf-parse');
-    const { Document, Packer, Paragraph, HeadingLevel, TextRun } = require('docx');
+    const { Document, Packer, Paragraph, HeadingLevel, TextRun, PageBreak } = require('docx');
 
     const pdfBuffer = fs.readFileSync(file.path);
     const parsed = await pdfParse(pdfBuffer);
-    const extractedText = (parsed.text || '').trim();
-
-    const lines = extractedText ? extractedText.split('\n').filter(Boolean) : ['No readable text found in PDF.'];
+    const extractedText = (parsed.text || '').replace(/\u0000/g, '').trim();
+    const pages = extractedText ? extractedText.split(/\f+/).filter(Boolean) : [];
 
     const children = [
       new Paragraph({
@@ -303,8 +432,50 @@ const pdfToWord = async (req, res) => {
         children: [new TextRun(`Source: ${file.originalname}`)],
       }),
       new Paragraph({ children: [] }),
-      ...lines.map((line) => new Paragraph({ children: [new TextRun(line)] })),
     ];
+
+    if (pages.length === 0) {
+      children.push(
+        new Paragraph({
+          children: [new TextRun('No readable text found in PDF.')],
+        })
+      );
+    } else {
+      pages.forEach((pageText, pageIndex) => {
+        const paragraphs = buildParagraphsFromPdfText(pageText);
+
+        if (pages.length > 1) {
+          children.push(
+            new Paragraph({
+              heading: HeadingLevel.HEADING_2,
+              children: [new TextRun(`Page ${pageIndex + 1}`)],
+              spacing: { before: 200, after: 120 },
+            })
+          );
+        }
+
+        if (paragraphs.length === 0) {
+          children.push(new Paragraph({ children: [new TextRun(' ')] }));
+        } else {
+          paragraphs.forEach((paragraphText) => {
+            children.push(
+              new Paragraph({
+                children: [new TextRun(paragraphText)],
+                spacing: { after: 140 },
+              })
+            );
+          });
+        }
+
+        if (pageIndex < pages.length - 1) {
+          children.push(
+            new Paragraph({
+              children: [new PageBreak()],
+            })
+          );
+        }
+      });
+    }
 
     const doc = new Document({
       sections: [{ properties: {}, children }],
