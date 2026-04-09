@@ -14,7 +14,7 @@
   position: relative;
 }
 
-/* Mobile Responsiveness - COMPLETELY HIDE SIDEBAR */
+/* MOBILE: Drawer-style sidebar */
 @media (max-width: 768px) {
   .sidebar {
     position: fixed !important;
@@ -22,20 +22,20 @@
     top: 0 !important;
     width: 260px !important;
     height: 100vh !important;
+    z-index: 1000 !important;
     transform: translateX(-100%) !important;
     transition: transform 0.3s ease !important;
-    z-index: 1000 !important;
-    display: flex !important;
   }
 
-  /* OPEN STATE - Show sidebar when open */
+  /* Show when open */
   .sidebar.open {
     transform: translateX(0) !important;
   }
 
-  /* CLOSED STATE - Hide sidebar when closed */
+  /* Hide when closed */
   .sidebar.closed {
     transform: translateX(-100%) !important;
+    pointer-events: none !important;
   }
 }
 

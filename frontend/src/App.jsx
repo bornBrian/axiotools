@@ -52,6 +52,14 @@ function App() {
 
   return (
     <div className="app-container">
+      {/* Mobile Backdrop Overlay */}
+      {sidebarOpen && window.innerWidth <= 768 && (
+        <div 
+          className="sidebar-backdrop"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+      
       <Sidebar 
         currentPage={currentPage} 
         onPageChange={(page) => {
