@@ -62,10 +62,10 @@
   min-width: 0;
 }
 
-/* Desktop: No margin needed (sidebar is fixed) */
+/* Desktop: offset content from fixed sidebar */
 @media (min-width: 1024px) {
   .main-content {
-    margin-left: 0;
+    margin-left: 260px;
     width: calc(100% - 260px);
   }
 }
